@@ -4,14 +4,15 @@ from re import findall as findall
 from time import sleep as sleep
 
 
-def wait(seconds):
-    a, b = 0, 0
+def wait(seconds, index=0):
+    a, b = index, 0
     list = ["[|]", "[/]", "[-]", "[\]"]
     while b < seconds:
         print("\r{}Running{}".format(list[a],list[a]), end="")
         sleep(0.5)
         a = (a + 1) % 4
         b += 1
+    return a
 
 
 def move_mouse(x):
@@ -32,12 +33,13 @@ def move_mouse(x):
 
 
 def main():
+    index = 0
     while(True):
         try:
             x = random.randint(1, 40)    # Random pixel range
             y = random.randint(10, 30)   # Random wait range
             move_mouse(x)
-            wait(y)
+            index = wait(y, index)
         except KeyboardInterrupt:
             print("\nExiting")
             quit()
