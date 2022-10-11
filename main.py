@@ -1,6 +1,5 @@
 import pyautogui
 import random
-from re import findall as findall
 from time import sleep as sleep
 
 
@@ -16,17 +15,17 @@ def wait(seconds, index=0):
 
 
 def move_mouse(x):
-    position = findall("\d+", str(pyautogui.position()))
+    positionX, positionY = pyautogui.position()
     direction = random.randint(1,4)
     if direction == 1:
-        pyautogui.moveTo((int(position[0]) + x), (int(position[1]) + x))
+        pyautogui.moveTo(positionX + x, positionY + x)
     elif direction == 2:
-        pyautogui.moveTo((int(position[0]) + x), (int(position[1]) - x))
+        pyautogui.moveTo(positionX + x, positionY - x)
     elif direction == 3:
-        pyautogui.moveTo((int(position[0]) - x), (int(position[1]) + x))
+        pyautogui.moveTo(positionX - x, positionY + x)
     else:
-        pyautogui.moveTo((int(position[0]) - x), (int(position[1]) - x))
-    pyautogui.moveTo((int(position[0]), (int(position[1]))))
+        pyautogui.moveTo(positionX - x, positionY - y)
+    pyautogui.moveTo(positionX, positionY)
 
 
 def main():
