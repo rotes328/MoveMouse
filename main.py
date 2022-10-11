@@ -34,8 +34,8 @@ def move_mouse(x):
 def main():
     while(True):
         try:
-            x = random.randint(1, 40)
-            y = random.randint(10, 30)
+            x = random.randint(1, 40)    # Random pixel range
+            y = random.randint(10, 30)   # Random wait range
             move_mouse(x)
             wait(y)
         except KeyboardInterrupt:
