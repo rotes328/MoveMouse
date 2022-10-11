@@ -20,16 +20,13 @@ def move_mouse(x):
     direction = random.randint(1,4)
     if direction == 1:
         pyautogui.moveTo((int(position[0]) + x), (int(position[1]) + x))
-        pyautogui.moveTo((int(position[0]), (int(position[1]))))
     elif direction == 2:
         pyautogui.moveTo((int(position[0]) + x), (int(position[1]) - x))
-        pyautogui.moveTo((int(position[0]), (int(position[1]))))
     elif direction == 3:
         pyautogui.moveTo((int(position[0]) - x), (int(position[1]) + x))
-        pyautogui.moveTo((int(position[0]), (int(position[1]))))
     else:
         pyautogui.moveTo((int(position[0]) - x), (int(position[1]) - x))
-        pyautogui.moveTo((int(position[0]), (int(position[1]))))
+    pyautogui.moveTo((int(position[0]), (int(position[1]))))
 
 
 def main():
