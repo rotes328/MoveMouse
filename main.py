@@ -17,26 +17,27 @@ def wait(seconds, index=0):
 def move_mouse(x):
     positionX, positionY = pyautogui.position()
     direction = random.randint(1,4)
-    if direction == 1:
-        pyautogui.moveTo(positionX + x, positionY + x)
-        currentX, currentY = pyautogui.position()
-        if positionX != (currentX - x) and positionY != (currentY - x):
-            return
-    elif direction == 2:
-        pyautogui.moveTo(positionX + x, positionY - x)
-        currentX, currentY = pyautogui.position()
-        if positionX != (currentX - x) and positionY != (currentY + x):
-            return
-    elif direction == 3:
-        pyautogui.moveTo(positionX - x, positionY + x)
-        currentX, currentY = pyautogui.position()
-        if positionX != (currentX + x) and positionY != (currentY - x):
-            return
-    else:
-        pyautogui.moveTo(positionX - x, positionY - x)
-        currentX, currentY = pyautogui.position()
-        if positionX != (currentX + x) and positionY != (currentY + x):
-            return
+    match direction:
+        case 1:
+            pyautogui.moveTo(positionX + x, positionY + x)
+            currentX, currentY = pyautogui.position()
+            if positionX != (currentX - x) and positionY != (currentY - x):
+                return
+        case 2:
+            pyautogui.moveTo(positionX + x, positionY - x)
+            currentX, currentY = pyautogui.position()
+            if positionX != (currentX - x) and positionY != (currentY + x):
+                return
+        case 3:
+            pyautogui.moveTo(positionX - x, positionY + x)
+            currentX, currentY = pyautogui.position()
+            if positionX != (currentX + x) and positionY != (currentY - x):
+                return
+        case 4:
+            pyautogui.moveTo(positionX - x, positionY - x)
+            currentX, currentY = pyautogui.position()
+            if positionX != (currentX + x) and positionY != (currentY + x):
+                return
     pyautogui.moveTo(positionX, positionY)
 
 
