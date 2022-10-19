@@ -19,12 +19,24 @@ def move_mouse(x):
     direction = random.randint(1,4)
     if direction == 1:
         pyautogui.moveTo(positionX + x, positionY + x)
+        currentX, currentY = pyautogui.position()
+        if positionX != (currentX - x) and positionY != (currentY - x):
+            return
     elif direction == 2:
         pyautogui.moveTo(positionX + x, positionY - x)
+        currentX, currentY = pyautogui.position()
+        if positionX != (currentX - x) and positionY != (currentY + x):
+            return
     elif direction == 3:
         pyautogui.moveTo(positionX - x, positionY + x)
+        currentX, currentY = pyautogui.position()
+        if positionX != (currentX + x) and positionY != (currentY - x):
+            return
     else:
-        pyautogui.moveTo(positionX - x, positionY - y)
+        pyautogui.moveTo(positionX - x, positionY - x)
+        currentX, currentY = pyautogui.position()
+        if positionX != (currentX + x) and positionY != (currentY + x):
+            return
     pyautogui.moveTo(positionX, positionY)
 
 
@@ -32,7 +44,7 @@ def main():
     index = 0
     while(True):
         try:
-            x = random.randint(1, 40)    # Random pixel range
+            x = random.randint(1, 5)    # Random pixel range
             y = random.randint(10, 30)   # Random wait range
             move_mouse(x)
             index = wait(y, index)
