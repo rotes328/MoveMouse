@@ -1,7 +1,9 @@
 import pyautogui
 import random
 from time import sleep as sleep
+from datetime import datetime
 
+pyautogui.FAILSAFE = False
 
 def wait(seconds, index=0):
     a, b = index, 0
@@ -42,6 +44,7 @@ def move_mouse(x):
 
 def main():
     index = 0
+    start = datetime.now().replace(microsecond=0)
     while(True):
         try:
             x = random.randint(1, 5)    # Random pixel range
@@ -49,7 +52,9 @@ def main():
             move_mouse(x)
             index = wait(y, index)
         except KeyboardInterrupt:
-            print("\nExiting")
+            endtime = datetime.now().replace(microsecond=0)
+            execution = endtime - start
+            print(f"\nExiting after {execution}")
             quit()
 
 
